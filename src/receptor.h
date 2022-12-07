@@ -5,7 +5,6 @@
 #include "usuario.h"
 
 class Receptor : public Usuario {
-    private:
     public:
         //Construtor
         Receptor(std::string cadastroNacional, 
@@ -16,6 +15,8 @@ class Receptor : public Usuario {
 
         //Destrutor
         ~Receptor();
+
+        //static const enum usuario {DOADOR, RECEPTOR, RECOLHEDOR} tipoUsuario = RECEPTOR;
 };
 
 #endif //RECEPTOR_H

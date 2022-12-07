@@ -2,13 +2,9 @@
 #ifndef DOADOR_H
 #define DOADOR_H
 
-#include <iostream>
-#include <string>
-
 #include "usuario.h"
 
 class Doador : public Usuario {
-    private:
     public:
         //Construtor
         Doador(std::string cadastroNacional, 
@@ -19,6 +15,8 @@ class Doador : public Usuario {
 
         //Destrutor
         ~Doador();
+
+        //static const enum usuario {DOADOR, RECEPTOR, RECOLHEDOR} tipoUsuario = DOADOR;
 };
 
 #endif //DOADOR_H

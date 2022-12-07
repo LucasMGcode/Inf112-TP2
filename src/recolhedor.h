@@ -5,7 +5,6 @@
 #include "usuario.h"
 
 class Recolhedor : public Usuario {
-    private:
     public:
         //Construtor
         Recolhedor(std::string cadastroNacional, 
@@ -16,6 +15,8 @@ class Recolhedor : public Usuario {
 
         //Destrutor
         ~Recolhedor();
+
+        //static const enum usuario {DOADOR, RECEPTOR, RECOLHEDOR} tipoUsuario = RECOLHEDOR;
 };
 
 #endif //RECOLHEDORES_H

@@ -13,7 +13,7 @@ class Usuario {
         std::string telefone;
         std::string email;
         
-    public:
+    public:        
         //Getters
         std::string getCadastroNacional();
         std::string getNome();

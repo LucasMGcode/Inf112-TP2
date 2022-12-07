@@ -15,8 +15,8 @@ class Cadastro {
     public:
         static void novoCadastro(int opcao);
         static void consultarCadastro(std::string cadastroNacional);
-        static void atualizarCadastro();
-        static void deletarCadastro();
+        static void atualizarCadastro(int opcao, std::string cadastroNacional);
+        static void deletarCadastro(std::string cadastroNacional);
 };
 
 #endif //CADASTRO_H
