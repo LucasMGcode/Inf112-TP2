@@ -3,6 +3,7 @@
 #define CADASTRORESIDUO_H
 
 #include <iostream>
+#include <string>
 
 class Residuo {
     protected:
@@ -10,12 +11,16 @@ class Residuo {
         std::string descricao;
         std::string tipo;
         std::string dicaRecolhimento;
+
     public:
         //Getters
         std::string getNome();
         std::string getDescricao();
         std::string getTipo();
         std::string getDicaRecolhimento();
+
+        //Método(s)
+        void imprimirDados(Residuo &residuo);
 };
 
 #endif //CADASTRORESIDUO_H

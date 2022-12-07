@@ -1,19 +1,26 @@
 //Aluno: Lucas de Oliveira Mota
-
 #include "residuo.h"
 
 std::string Residuo::getNome() {
-    return this->nome;
+    return nome;
 }
 
 std::string Residuo::getDescricao() {
-    return this->descricao;
+    return descricao;
 }
 
 std::string Residuo::getTipo() {
-    return this->tipo;
+    return tipo;
 }
 
 std::string Residuo::getDicaRecolhimento() {
-    return this->dicaRecolhimento;
+    return dicaRecolhimento;
+}
+
+//Método(s)
+void Residuo::imprimirDados(Residuo &residuo) {
+    std::cout << "Nome: " << residuo.getNome() << std::endl;
+    std::cout << "Descrição: " << residuo.getDescricao() << std::endl;
+    std::cout << "Tipo: " << residuo.getTipo() << std::endl;
+    std::cout << "Dica de Recolhimento: " << residuo.getDicaRecolhimento() << std::endl;
 }

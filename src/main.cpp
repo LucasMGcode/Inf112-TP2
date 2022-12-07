@@ -106,7 +106,6 @@ int main() {
                 std::cout << "Cadastro de resíduos" << std::endl;
             } else if (opcao == 3) {
                 //Cadastro de pontos de coleta
-                std::cout << "Cadastro de pontos de coleta" << std::endl;
             } else if (opcao == 4) {
                 //Agendamento de coleta
                 std::cout << "Agendamento de coleta" << std::endl;
@@ -215,7 +214,23 @@ int main() {
                 }
             } else if (opcao == 2) {
                 //Atualizar resíduos
-                std::cout << "Atualizar resíduos" << std::endl;
+                std::cout << "Escolha uma opção:" << std::endl;
+                std::cout << "1 - Sólido" << std::endl;
+                std::cout << "2 - Líquido" << std::endl;
+                std::cout << "3 - Voltar" << std::endl;
+                std::cin >> opcao;
+
+                system("clear||cls");
+                if (opcao >= 1 && opcao <= 2) {
+                    std::string nome;
+                    std::cout << "Digite o nome para consulta: ";
+                    std::cin >> nome;
+                    CadastroResiduo::atualizarCadastroResiduo(opcao, nome);
+                } else if (opcao == 3) {
+                    continue;
+                } else {
+                    std::cout << "Opção inválida" << std::endl;
+                }
             } else if (opcao == 3) {
                 //Atualizar pontos de coleta
                 std::cout << "Atualizar pontos de coleta" << std::endl;
