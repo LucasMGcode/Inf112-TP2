@@ -3,14 +3,15 @@
 #include <string>
 #include <cstdlib>
 
-#include "cadastro.h"
+#include "cadastroUsuario.h"
+#include "cadastroResiduo.h"
 
 /*
     Visão geral do programa: sistema de coleta seletiva
 
     Cadastro de usuários:
-        doadores (Pessoa física ou jurídica) - lista de interesses
-        receptores (Pessoa física ou jurídica) - lista de interesses
+        doadores (Pessoa física ou jurídica)   - TO DO: lista de interesses
+        receptores (Pessoa física ou jurídica) - TO DO: lista de interesses
         recolhedores (Pessoa física ou jurídica)
     Cadastro de residuos:
         tipo de resíduo:
@@ -45,9 +46,9 @@
 int main() {
     int opcao;
 
+    std::cout << "Bem vindo ao sistema de coleta seletiva" << std::endl;
+
     while (true) {
-        //Menu inicial, Cadastro, Consulta, Atualizar, Excluir
-        std::cout << "Bem vindo ao sistema de coleta seletiva" << std::endl;
         std::cout << "Escolha uma opção:" << std::endl;
         std::cout << "1 - Cadastro" << std::endl;
         std::cout << "2 - Consulta" << std::endl;
@@ -79,7 +80,7 @@ int main() {
 
                 system("clear||cls");
                 if (opcao >= 1 && opcao <= 3) {
-                    Cadastro::novoCadastro(opcao);
+                    CadastroUsuario::novoCadastroUsuario(opcao);
                 } else if (opcao == 4) {
                     continue;
                 } else {
@@ -88,6 +89,20 @@ int main() {
 
             } else if (opcao == 2) {
                 //Cadastro de resíduos
+                std::cout << "Escolha uma opção:" << std::endl;
+                std::cout << "1 - Sólido" << std::endl;
+                std::cout << "2 - Líquido" << std::endl;
+                std::cout << "3 - Voltar" << std::endl;
+                std::cin >> opcao;
+
+                system("clear||cls");
+                if (opcao >= 1 && opcao <= 2) {
+                    CadastroResiduo::novoCadastroResiduo(opcao);
+                } else if (opcao == 3) {
+                    continue;
+                } else {
+                    std::cout << "Opção inválida" << std::endl;
+                }
                 std::cout << "Cadastro de resíduos" << std::endl;
             } else if (opcao == 3) {
                 //Cadastro de pontos de coleta
@@ -126,7 +141,7 @@ int main() {
                     std::string cadastroNacional;
                     std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
                     std::cin >> cadastroNacional;
-                    Cadastro::consultarCadastro(cadastroNacional);
+                    CadastroUsuario::consultarCadastroUsuario(opcao, cadastroNacional);
                 } else if (opcao == 4) {
                     continue;
                 } else {
@@ -134,7 +149,26 @@ int main() {
                 }
             } else if (opcao == 2) {
                 //Consultar resíduos
-                std::cout << "Consultar resíduos" << std::endl;
+                std::cout << "Escolha uma opção:" << std::endl;
+                std::cout << "1 - Sólido" << std::endl;
+                std::cout << "2 - Líquido" << std::endl;
+                std::cout << "3 - Consultar todos" << std::endl;
+                std::cout << "4 - Voltar" << std::endl;
+                std::cin >> opcao;
+
+                system("clear||cls");
+                if (opcao >= 1 && opcao <= 2) {
+                    std::string codigo;
+                    std::cout << "Digite o código para consulta: ";
+                    std::cin >> codigo;
+                    CadastroResiduo::consultarCadastroResiduo(opcao, codigo);
+                } else if (opcao == 3) {
+                    CadastroResiduo::consultarCadastroResiduo(opcao);
+                } else if (opcao == 4) {
+                    continue;
+                } else {
+                    std::cout << "Opção inválida" << std::endl;
+                }
             } else if (opcao == 3) {
                 //Consultar pontos de coleta
                 std::cout << "Consultar pontos de coleta" << std::endl;
@@ -173,7 +207,7 @@ int main() {
                     std::string cadastroNacional;
                     std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
                     std::cin >> cadastroNacional;
-                    Cadastro::atualizarCadastro(opcao, cadastroNacional);
+                    CadastroUsuario::atualizarCadastroUsuario(opcao, cadastroNacional);
                 } else if (opcao == 4) {
                     continue;
                 } else {
@@ -210,7 +244,7 @@ int main() {
                 std::string cadastroNacional;
                 std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
                 std::cin >> cadastroNacional;
-                Cadastro::deletarCadastro(cadastroNacional);
+                CadastroUsuario::deletarCadastroUsuario(cadastroNacional);
             } else if (opcao == 2) {
                 //Excluir resíduos
                 std::cout << "Excluir resíduos" << std::endl;

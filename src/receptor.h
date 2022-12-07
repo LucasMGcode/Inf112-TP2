@@ -15,8 +15,6 @@ class Receptor : public Usuario {
 
         //Destrutor
         ~Receptor();
-
-        //static const enum usuario {DOADOR, RECEPTOR, RECOLHEDOR} tipoUsuario = RECEPTOR;
 };
 
 #endif //RECEPTOR_H

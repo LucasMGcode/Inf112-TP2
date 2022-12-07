@@ -15,8 +15,6 @@ class Recolhedor : public Usuario {
 
         //Destrutor
         ~Recolhedor();
-
-        //static const enum usuario {DOADOR, RECEPTOR, RECOLHEDOR} tipoUsuario = RECOLHEDOR;
 };
 
 #endif //RECOLHEDORES_H

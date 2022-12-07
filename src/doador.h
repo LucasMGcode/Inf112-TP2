@@ -15,8 +15,6 @@ class Doador : public Usuario {
 
         //Destrutor
         ~Doador();
-
-        //static const enum usuario {DOADOR, RECEPTOR, RECOLHEDOR} tipoUsuario = DOADOR;
 };
 
 #endif //DOADOR_H
