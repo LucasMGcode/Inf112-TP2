@@ -1,26 +1,46 @@
 //Aluno: Lucas de Oliveira Mota
 #include "residuo.h"
 
+//Construtor
+Residuo::Residuo(int tipo, std::string nome, std::string descricao, std::string dicaRecolhimento) {
+    setTipo(tipo);
+    setNome(nome);
+    setDescricao(descricao);
+    setDicaRecolhimento(dicaRecolhimento);
+}
+
+//Destrutor
+Residuo::~Residuo() {}
+
+//Getters e Setters
+int Residuo::getTipo() {
+    return tipo;
+}
+
+void Residuo::setTipo(int tipo) {
+    this->tipo = tipo;
+}
+
 std::string Residuo::getNome() {
     return nome;
+}
+
+void Residuo::setNome(std::string nome) {
+    this->nome = nome;
 }
 
 std::string Residuo::getDescricao() {
     return descricao;
 }
 
-std::string Residuo::getTipo() {
-    return tipo;
+void Residuo::setDescricao(std::string descricao) {
+    this->descricao = descricao;
 }
 
 std::string Residuo::getDicaRecolhimento() {
     return dicaRecolhimento;
 }
 
-//Método(s)
-void Residuo::imprimirDados(Residuo &residuo) {
-    std::cout << "Nome: " << residuo.getNome() << std::endl;
-    std::cout << "Descrição: " << residuo.getDescricao() << std::endl;
-    std::cout << "Tipo: " << residuo.getTipo() << std::endl;
-    std::cout << "Dica de Recolhimento: " << residuo.getDicaRecolhimento() << std::endl;
+void Residuo::setDicaRecolhimento(std::string dicaRecolhimento) {
+    this->dicaRecolhimento = dicaRecolhimento;
 }

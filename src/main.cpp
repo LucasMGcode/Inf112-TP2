@@ -151,19 +151,16 @@ int main() {
                 std::cout << "Escolha uma opção:" << std::endl;
                 std::cout << "1 - Sólido" << std::endl;
                 std::cout << "2 - Líquido" << std::endl;
-                std::cout << "3 - Consultar todos" << std::endl;
-                std::cout << "4 - Voltar" << std::endl;
+                std::cout << "3 - Voltar" << std::endl;
                 std::cin >> opcao;
 
                 system("clear||cls");
                 if (opcao >= 1 && opcao <= 2) {
                     std::string codigo;
-                    std::cout << "Digite o código para consulta: ";
+                    std::cout << "Digite o nome do resíduo para consulta: ";
                     std::cin >> codigo;
                     CadastroResiduo::consultarCadastroResiduo(opcao, codigo);
                 } else if (opcao == 3) {
-                    CadastroResiduo::consultarCadastroResiduo(opcao);
-                } else if (opcao == 4) {
                     continue;
                 } else {
                     std::cout << "Opção inválida" << std::endl;
@@ -223,7 +220,7 @@ int main() {
                 system("clear||cls");
                 if (opcao >= 1 && opcao <= 2) {
                     std::string nome;
-                    std::cout << "Digite o nome para consulta: ";
+                    std::cout << "Digite o nome para atualizar: ";
                     std::cin >> nome;
                     CadastroResiduo::atualizarCadastroResiduo(opcao, nome);
                 } else if (opcao == 3) {

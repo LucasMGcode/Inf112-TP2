@@ -2,12 +2,18 @@
 #include "solido.h"
 
 //Construtor
-Solido::Solido(std::string nome, std::string descricao, std::string tipo, std::string dicaRecolhimento) {
-    this->nome = nome;
-    this->descricao = descricao;
-    this->tipo = tipo;
-    this->dicaRecolhimento = dicaRecolhimento;
+Solido::Solido(int tipo, std::string nome, std::string descricao, std::string dicaRecolhimento, double peso) : Residuo(tipo, nome, descricao, dicaRecolhimento) {
+    setPeso(peso);
 }
 
 //Destrutor
 Solido::~Solido() {}
+
+//Getters e Setters
+double Solido::getPeso() {
+    return peso;
+}
+
+void Solido::setPeso(double peso) {
+    this->peso = peso;
+}

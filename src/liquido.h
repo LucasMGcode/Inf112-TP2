@@ -5,12 +5,18 @@
 #include "residuo.h"
 
 class Liquido : public Residuo {
+    private:
+        double volume; //Volume em litros
     public:
         //Construtor
-        Liquido(std::string nome, std::string descricao, std::string tipo, std::string dicaRecolhimento);
+        Liquido(int tipo, std::string nome, std::string descricao, std::string dicaRecolhimento, double volume);
 
         //Destrutor
         ~Liquido();
+
+        //Getters e Setters
+        double getVolume();
+        void setVolume(double volume);
 };
 
 #endif //LIQUIDO_H

@@ -1,26 +1,33 @@
 //Aluno: Lucas de Oliveira Mota
-#ifndef CADASTRORESIDUO_H
-#define CADASTRORESIDUO_H
+#ifndef RESIDUO_H
+#define RESIDUO_H
 
 #include <iostream>
 #include <string>
 
 class Residuo {
     protected:
+        int tipo;
         std::string nome;
         std::string descricao;
-        std::string tipo;
         std::string dicaRecolhimento;
 
     public:
-        //Getters
-        std::string getNome();
-        std::string getDescricao();
-        std::string getTipo();
-        std::string getDicaRecolhimento();
+        //Construtor
+        Residuo(int tipo, std::string nome, std::string descricao, std::string dicaRecolhimento);
 
-        //Método(s)
-        void imprimirDados(Residuo &residuo);
+        //Destrutor
+        ~Residuo();
+        
+        //Getters e Setters
+        virtual int getTipo();
+        virtual void setTipo(int tipo);
+        virtual std::string getNome();
+        virtual void setNome(std::string nome);
+        virtual std::string getDescricao();
+        virtual void setDescricao(std::string descricao);
+        virtual std::string getDicaRecolhimento();
+        virtual void setDicaRecolhimento(std::string dicaRecolhimento);
 };
 
-#endif //CADASTRORESIDUO_H
+#endif //RESIDUO_H

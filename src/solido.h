@@ -5,12 +5,18 @@
 #include "residuo.h"
 
 class Solido : public Residuo {
+    private:
+        double peso; //Peso em gramas
     public:
         //Construtor
-        Solido(std::string nome, std::string descricao, std::string tipo, std::string dicaRecolhimento);
+        Solido(int tipo, std::string nome, std::string descricao, std::string dicaRecolhimento, double peso);
 
         //Destrutor
         ~Solido();
+
+        //Getters e Setters
+        double getPeso();
+        void setPeso(double peso);
 };
 
 #endif //SOLIDO_H

@@ -1,5 +1,7 @@
 //Aluno: Lucas de Oliveira Mota
 //TO DO: tratamento de exceções
+//TO DO: revisar o código
+//TO DO: tornar classes usuários mais específicas
 #include <iostream>
 #include <cstring>
 
@@ -12,10 +14,10 @@ void CadastroUsuario::novoCadastroUsuario(int opcao) {
     std::vector<Usuario> usuarios;
 
     std::cout << "Cadastro Nacional: ";
-    std::cin >> cadastroNacional;
+    std::cin.ignore();
+    std::getline(std::cin, cadastroNacional);
 
     std::cout << "Nome: ";
-    std::cin.ignore();
     std::getline(std::cin, nome);
 
     std::cout << "Endereco: ";
@@ -25,7 +27,7 @@ void CadastroUsuario::novoCadastroUsuario(int opcao) {
     std::getline(std::cin, telefone);
 
     std::cout << "Email: ";
-    std::cin >> email;
+    std::getline(std::cin, email);
 
     if (opcao == 1) {
         Doador doador(cadastroNacional, nome, endereco, telefone, email);
@@ -74,15 +76,15 @@ void CadastroUsuario::consultarCadastroUsuario(int opcao, std::string cadastroNa
     }
 
     //Conta quantas vezes o cadastroNacional aparece no vetor
-    int count = 0;
+    int cont = 0;
     for (int i = 0; i < dados.size(); i++) {
         if (dados[i] == cadastroNacional) {
-            count++;
+            cont++;
         }
     }
 
     //Se o cadastroNacional aparecer mais de uma vez, mostrar todos os cadastros
-    if (count >= 1) {
+    if (cont >= 1) {
         int achou = 0; //Auxilia na comunicação com o usuário
         for (int i = 0; i < dados.size(); i++) {
             if (dados[i] == cadastroNacional) {

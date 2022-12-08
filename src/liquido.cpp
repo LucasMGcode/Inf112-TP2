@@ -2,12 +2,18 @@
 #include "liquido.h"
 
 //Construtor
-Liquido::Liquido(std::string nome, std::string descricao, std::string tipo, std::string dicaRecolhimento) {
-    this->nome = nome;
-    this->descricao = descricao;
-    this->tipo = tipo;
-    this->dicaRecolhimento = dicaRecolhimento;
+Liquido::Liquido(int tipo, std::string nome, std::string descricao, std::string dicaRecolhimento, double volume) : Residuo(tipo, nome, descricao, dicaRecolhimento) {
+    setVolume(volume);
 }
 
 //Destrutor
 Liquido::~Liquido() {}
+
+//Getters e Setters
+double Liquido::getVolume() {
+    return volume;
+}
+
+void Liquido::setVolume(double volume) {
+    this->volume = volume;
+}
