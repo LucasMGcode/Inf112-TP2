@@ -1,4 +1,4 @@
-//Aluno: Lucas de Oliveira Mota
+//Aluno: Lucas Mota, Igor Acácio
 #ifndef RECOLHEDORES_H
 #define RECOLHEDORES_H
 

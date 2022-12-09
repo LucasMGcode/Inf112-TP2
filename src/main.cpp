@@ -1,4 +1,4 @@
-//Aluno: Lucas de Oliveira Mota
+//Aluno: Lucas Mota, Igor Acácio
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -40,8 +40,6 @@
         - quantidade
         - observações
 */
-
-//Na função main, o usuário escolhe o tipo de cadastro que deseja fazer
 
 int main() {
     int opcao;
