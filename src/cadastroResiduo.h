@@ -15,7 +15,7 @@ class CadastroResiduo {
         static void novoCadastroResiduo(int opcao);
         static void consultarCadastroResiduo(int opcao, std::string nome); //Consulta por nome
         static void atualizarCadastroResiduo(int opcao, std::string nome);
-        static void deletarCadastroResiduo();
+        static void deletarCadastroResiduo(std::string nome);
 };
 
 #endif //CADASTRORESIDUO_H

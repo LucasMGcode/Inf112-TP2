@@ -257,7 +257,11 @@ int main() {
                 CadastroUsuario::deletarCadastroUsuario(cadastroNacional);
             } else if (opcao == 2) {
                 //Excluir resíduos
-                std::cout << "Excluir resíduos" << std::endl;
+                system("clear||cls");
+                std::string nome;
+                std::cout << "Digite o nome do resíduo: ";
+                std::cin >> nome;
+                CadastroResiduo::deletarCadastroResiduo(nome);
             } else if (opcao == 3) {
                 //Excluir pontos de coleta
                 std::cout << "Excluir pontos de coleta" << std::endl;
