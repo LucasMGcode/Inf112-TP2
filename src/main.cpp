@@ -5,6 +5,7 @@
 
 #include "cadastroUsuario.h"
 #include "cadastroResiduo.h"
+#include "cadastroAgendamento.h"
 
 /*
     Visão geral do programa: sistema de coleta seletiva
@@ -107,12 +108,15 @@ int main() {
             } else if (opcao == 4) {
                 //Agendamento de coleta
                 std::cout << "Agendamento de coleta" << std::endl;
+                CadastroAgendamento::novoCadastroAgendamento(opcao);
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
             } else {
                 std::cout << "Opção inválida!" << std::endl;
             }
+
+
         } else if (opcao == 2) {
             //Consultar
             std::cout << "Escolha uma opção:" << std::endl;
@@ -169,6 +173,10 @@ int main() {
             } else if (opcao == 4) {
                 //Consultar agendamentos
                 std::cout << "Consultar agendamentos" << std::endl;
+                std::string CadastroAgendamento;
+                std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
+                std::cin >> CadastroAgendamento;
+                CadastroAgendamento::consultarCadastroAgendamento(opcao, CadastroAgendamento);
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
@@ -268,6 +276,7 @@ int main() {
             } else if (opcao == 4) {
                 //Excluir agendamentos
                 std::cout << "Excluir agendamentos" << std::endl;
+                CadastroAgendamento::deletarCadastroAgendamento(opcao);
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
