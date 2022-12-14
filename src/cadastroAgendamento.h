@@ -1,3 +1,4 @@
+//Aluno: Lucas Mota, Igor Acácio
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,5 +13,3 @@ public:
     static void consultarCadastroAgendamento(int opcao, std::string CadastroAgendamento); //Consulta por nome
     static void deletarCadastroAgendamento(int opcao1);
 };
-
-
