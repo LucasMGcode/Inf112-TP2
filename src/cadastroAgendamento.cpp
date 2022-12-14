@@ -16,6 +16,7 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao){
     std::vector<Agendamento> vecagendamentos;
     std::string cadastroNacional1;
     std::string cadastroNacional2;
+    std::string nomeResiduo;
 
 
     std::cout << "Local: ";
@@ -30,6 +31,11 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao){
     
     std::cout << "Cadastro de usuario Recolhedor: ";
     std::getline(std::cin, cadastroNacional2);
+
+    std::cout << "Nome do Residuo: ";
+    std::getline(std::cin, nomeResiduo);
+
+
     
      
   Agendamento agendamento(data, local);
@@ -41,6 +47,7 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao){
         arquivoagendamento << data              << "&";
         arquivoagendamento << cadastroNacional1 << "&";
         arquivoagendamento << cadastroNacional2 << "&";
+        arquivoagendamento << nomeResiduo       << "&";
         arquivoagendamento << std::endl;
     }
 
@@ -61,7 +68,7 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
     //Consultar cadastros de agendamento 
     std::ifstream arquivoagendamento;
     std::string linha;
-    std::string local, data, cadastroNacional2;
+    std::string local, data, cadastroNacional2, nomeresiduo;
     std::vector<Agendamento> vecagendamentos;
    
     arquivoagendamento.open("agendamento.txt");
@@ -74,6 +81,7 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
             std::getline(ss, data, '&');
             std::getline(ss, cadastroNacional1, '&');
             std::getline(ss, cadastroNacional2, '&');
+            std::getline(ss, nomeresiduo, '&');
             Agendamento agendamento(data, local);
             vecagendamentos.push_back(agendamento);
         }
@@ -85,6 +93,7 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
         std::cout << "Data: " << vecagendamentos[i].getData() << std::endl;
         std::cout << "Cadastro de usuario Receptor: " << cadastroNacional1 << std::endl;
         std::cout << "Cadastro de usuario Recolhedor: " << cadastroNacional2 << std::endl;
+        std::cout << "Nome do Residuo: " << nomeresiduo << std::endl;
         std::cout << std::endl;
     }
     }
@@ -112,6 +121,7 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1){
     std::string dataDeletar;
     std::string cadastroNacional1Deletar;
     std::string cadastroNacional2Deletar;
+    std::string nomeResiduoDeletar;
     int opcao;
     bool achou = false;
 
@@ -128,6 +138,10 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1){
     std::cout << "Digite o cadastro de usuario Recolhedor a ser deletado: ";
     std::getline(std::cin, cadastroNacional2Deletar);
 
+    std::cout << "Digite o nome do Residuo a ser deletado: ";
+    std::getline(std::cin, nomeResiduoDeletar);
+
+
     arquivoagendamento.open("agendamento.txt");
     arquivoagendamento2.open("agendamento2.txt");
 
@@ -138,11 +152,12 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1){
             std::getline(ss, data, '&');
             std::getline(ss, cadastroNacional1, '&');
             std::getline(ss, cadastroNacional2, '&');
-            if(local != localDeletar || data != dataDeletar || cadastroNacional1 != cadastroNacional1Deletar || cadastroNacional2 != cadastroNacional2Deletar){
+            if(local != localDeletar || data != dataDeletar || cadastroNacional1 != cadastroNacional1Deletar || cadastroNacional2 != cadastroNacional2Deletar || nomeResiduoDeletar != nomeResiduoDeletar){
                 arquivoagendamento2 << local << "&";
                 arquivoagendamento2 << data << "&";
                 arquivoagendamento2 << cadastroNacional1 << "&";
                 arquivoagendamento2 << cadastroNacional2 << "&";
+                arquivoagendamento2 << nomeResiduoDeletar << "&";
                 arquivoagendamento2 << std::endl;
             }
             else {
@@ -175,3 +190,5 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1){
 
 
 }
+
+
