@@ -1,4 +1,5 @@
 //Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
 //TO DO: tratamento de exceções
 #include <iostream>
 #include <cstring>
@@ -121,6 +122,49 @@ void CadastroResiduo::consultarCadastroResiduo(int opcao, std::string nome) {
     system("clear||cls");
 }
 
-void CadastroResiduo::atualizarCadastroResiduo(int opcao, std::string nome) {}
+void CadastroResiduo::atualizarCadastroResiduo(int opcao, std::string nome1) {
+    std::string nome;
+    std::ifstream arquivo;
+    std::ofstream arquivo1;
+    arquivo.open("cadastroResiduo.txt");
+    arquivo1.open("cadastroResiduo1.txt");
+    while(!arquivo.eof()){
+        arquivo >> nome;
+        if(nome1 == nome){
+            std::cout << "Digite o novo nome do residuo: ";
+            std::cin >> nome1;
+            arquivo1 << nome1 << std::endl;
+        }else{
+            arquivo1 << nome << std::endl;
+        }
+    }
+    arquivo.close();
+    arquivo1.close();
+    remove("cadastroResiduo.txt");
+    rename("cadastroResiduo1.txt", "cadastroResiduo.txt");
+}
 
-void CadastroResiduo::deletarCadastroResiduo() {}
+
+void CadastroResiduo::deletarCadastroResiduo(int opcao, std::string nome1) {
+   //Deleta um registro cadastrado
+    std::string nome;
+    std::ifstream arquivo;
+    std::ofstream arquivo1;
+    arquivo.open("coleta.txt");
+    arquivo1.open("coleta1.txt");
+    while(!arquivo.eof()){
+        arquivo >> nome;
+        if(nome != nome1){
+            arquivo1 << nome    << "&" <<  std::endl;
+        }
+    }
+    arquivo.close();
+    arquivo1.close();
+    remove("coleta.txt");
+    rename("coleta1.txt", "coleta.txt");
+
+
+
+
+
+}

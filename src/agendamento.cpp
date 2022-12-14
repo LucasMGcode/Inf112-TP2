@@ -1,3 +1,6 @@
+//Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
+
 #include <iostream> 
 #include <fstream>
 #include <string>

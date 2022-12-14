@@ -1,3 +1,6 @@
+//Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
+
 #include <iostream> 
 #include <fstream>
 #include <string>
@@ -60,8 +63,54 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao){
     std::cin.get();
     system("clear||cls");
 }
+//Função para atualizar algum CadastroAgendamento
 
+void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string cadastroNacional1){
+    //Dados usados no agendamento
+    std::string data, local;
+    std::ofstream arquivoagendamento;
+    std::vector<Agendamento> vecagendamentos;
+    std::string cadastroNacional2;
+    std::string nomeResiduo;
 
+    std::cout << "Local: ";
+    std::cin.ignore();
+    std::getline(std::cin, local);
+
+    std::cout << "Data: ";
+    std::getline(std::cin, data);
+
+    std::cout << "Cadastro de usuario Receptor: ";
+    std::getline(std::cin, cadastroNacional1);
+    
+    std::cout << "Cadastro de usuario Recolhedor: ";
+    std::getline(std::cin, cadastroNacional2);
+
+    std::cout << "Nome do Residuo: ";
+    std::getline(std::cin, nomeResiduo);
+
+    Agendamento agendamento(data, local);
+        vecagendamentos.push_back(agendamento);
+
+    arquivoagendamento.open("agendamento.txt", std::ios::app);
+    for(int i = 0; i < vecagendamentos.size(); i++) {
+        arquivoagendamento << local             << "&";
+        arquivoagendamento << data              << "&";
+        arquivoagendamento << cadastroNacional1 << "&";
+        arquivoagendamento << cadastroNacional2 << "&";
+        arquivoagendamento << nomeResiduo       << "&";
+        arquivoagendamento << std::endl;
+    }
+
+    arquivoagendamento.close();
+
+    system("clear||cls");
+    std::cout << "Cadastro atualizado com sucesso!" << std::endl;
+    std::cout << "Pressione ENTER para continuar..." << std::endl;
+    std::cin.ignore();
+    std::cin.get();
+    system("clear||cls");
+}
 
 
 void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string cadastroNacional1){
@@ -110,12 +159,12 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
 
 
 }
-void CadastroAgendamento::deletarCadastroAgendamento(int opcao1){
+void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cadastroNacional1){
     //Deletar um agendamento
     std::ifstream arquivoagendamento;
     std::ofstream arquivoagendamento2;
     std::string linha;
-    std::string local, data, cadastroNacional1, cadastroNacional2;
+    std::string local, data, cadastroNacional2;
     std::vector<Agendamento> vecagendamentos;
     std::string localDeletar;
     std::string dataDeletar;

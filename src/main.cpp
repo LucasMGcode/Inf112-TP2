@@ -1,4 +1,5 @@
 //Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -6,6 +7,7 @@
 #include "cadastroUsuario.h"
 #include "cadastroResiduo.h"
 #include "cadastroAgendamento.h"
+#include "cadastroColeta.h"
 
 /*
     Visão geral do programa: sistema de coleta seletiva
@@ -105,12 +107,17 @@ int main() {
                     std::cout << "Opção inválida" << std::endl;
                 }
                 std::cout << "Cadastro de resíduos" << std::endl;
+                
             } else if (opcao == 3) {
                 //Cadastro de pontos de coleta
+                std::cout << "Cadastro de pontos de coleta" << std::endl;
+                CadastroColeta::novoCadastroColeta (opcao);
+
             } else if (opcao == 4) {
                 //Agendamento de coleta
                 std::cout << "Agendamento de coleta" << std::endl;
                 CadastroAgendamento::novoCadastroAgendamento(opcao);
+
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
@@ -145,6 +152,7 @@ int main() {
                     std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
                     std::cin >> cadastroNacional;
                     CadastroUsuario::consultarCadastroUsuario(opcao, cadastroNacional);
+
                 } else if (opcao == 4) {
                     continue;
                 } else {
@@ -162,23 +170,33 @@ int main() {
                 if (opcao >= 1 && opcao <= 2) {
                     std::string codigo;
                     std::cout << "Digite o nome do resíduo para consulta: ";
-                    std::cin >> codigo;
+                    std::cin.ignore();
+                    std::getline(std::cin, codigo);
                     CadastroResiduo::consultarCadastroResiduo(opcao, codigo);
+
                 } else if (opcao == 3) {
                     continue;
                 } else {
                     std::cout << "Opção inválida" << std::endl;
                 }
             } else if (opcao == 3) {
+                std::string cadastrocoleta;
                 //Consultar pontos de coleta
                 std::cout << "Consultar pontos de coleta" << std::endl;
+                std::cout << "Digite o nome do local para consulta:" << std::endl;
+                std::cin.ignore();
+                std::getline(std::cin,cadastrocoleta);
+                CadastroColeta::consultarCadastroColeta(opcao, cadastrocoleta);
+
             } else if (opcao == 4) {
                 //Consultar agendamentos
-                std::cout << "Consultar agendamentos" << std::endl;
                 std::string CadastroAgendamento;
+                std::cout << "Consultar agendamentos" << std::endl;
                 std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
-                std::cin >> CadastroAgendamento;
+                std::cin.ignore();
+                std::getline(std::cin, CadastroAgendamento);
                 CadastroAgendamento::consultarCadastroAgendamento(opcao, CadastroAgendamento);
+
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
@@ -228,7 +246,7 @@ int main() {
                 system("clear||cls");
                 if (opcao >= 1 && opcao <= 2) {
                     std::string nome;
-                    std::cout << "Digite o nome para atualizar: ";
+                    std::cout << "Digite o nome do residuo para atualizar: ";
                     std::cin >> nome;
                     CadastroResiduo::atualizarCadastroResiduo(opcao, nome);
                 } else if (opcao == 3) {
@@ -237,11 +255,23 @@ int main() {
                     std::cout << "Opção inválida" << std::endl;
                 }
             } else if (opcao == 3) {
+                std::string cadastrocoleta;
                 //Atualizar pontos de coleta
                 std::cout << "Atualizar pontos de coleta" << std::endl;
+                std::cout << "Digite o nome do local para atualizar: ";
+                std::cin.ignore();
+                std::getline(std::cin, cadastrocoleta);
+                CadastroColeta::atualizarCadastroColeta(opcao, cadastrocoleta);
+
             } else if (opcao == 4) {
+                std::string cadastroagendamento;
                 //Atualizar agendamentos
                 std::cout << "Atualizar agendamentos" << std::endl;
+                std::cout << "Digite o cadastro nacional(CPF/CNPJ) para atualizar: ";
+                std::cin.ignore();
+                std::getline(std::cin, cadastroagendamento);
+                CadastroAgendamento::atualizarCadastroAgendamento(opcao, cadastroagendamento);
+                
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
@@ -265,16 +295,33 @@ int main() {
                 std::cout << "Digite o cadastro nacional(CPF/CNPJ) para consulta: ";
                 std::cin >> cadastroNacional;
                 CadastroUsuario::deletarCadastroUsuario(cadastroNacional);
+
             } else if (opcao == 2) {
                 //Excluir resíduos
+                std::string nome;
                 std::cout << "Excluir resíduos" << std::endl;
+                std::cout << "Digite o nome do residuo para excluir: ";
+                std::cin >> nome;
+                CadastroResiduo::deletarCadastroResiduo(opcao, nome);
+
             } else if (opcao == 3) {
                 //Excluir pontos de coleta
+                std::string cadastrocoleta;
                 std::cout << "Excluir pontos de coleta" << std::endl;
+                std::cout << "Digite o nome do local para excluir: ";
+                std::cin.ignore();
+                std::getline(std::cin, cadastrocoleta);
+                CadastroColeta::deletarCadastroColeta(opcao, cadastrocoleta);
+
             } else if (opcao == 4) {
                 //Excluir agendamentos
+                std::string cadastroagendamento;
                 std::cout << "Excluir agendamentos" << std::endl;
-                CadastroAgendamento::deletarCadastroAgendamento(opcao);
+                std::cout << "Digite o cadastro nacional(CPF/CNPJ) para excluir: ";
+                std::cin.ignore();
+                std::getline(std::cin, cadastroagendamento);
+                CadastroAgendamento::deletarCadastroAgendamento(opcao, cadastroagendamento);
+
             } else if (opcao == 5) {
                 //Voltar
                 std::cout << "Voltando..." << std::endl;
