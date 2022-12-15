@@ -1,4 +1,4 @@
-//Aluno: Lucas de Oliveira Mota
+//Aluno: Lucas Mota, Igor Acácio
 #ifndef LIQUIDO_H
 #define LIQUIDO_H
 

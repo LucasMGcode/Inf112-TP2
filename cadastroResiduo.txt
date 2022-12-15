@@ -1,1 +1,3 @@
-
+1&Metal&Latas, parafusos&Separar metais e procurar um ponto de coleta&
+2&Tinta&Tinta qualquer velha&Jogar no lugar certo&
+1&Lixo toxico&toxico&jogar fora!&

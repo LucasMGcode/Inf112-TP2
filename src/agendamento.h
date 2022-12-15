@@ -1,20 +1,18 @@
 //Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá  
-
+//       Igor Cristian Acácio Josafá
 
 #ifndef AGENDAMENTO_H
 #define AGENDAMENTO_H
 
-
-#include <iostream> 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include "cadastroResiduo.h"
 #include "cadastroUsuario.h"
 
-class Agendamento{
-
-private: 
+class Agendamento
+{
+private:
     std::string data;
     std::string local;
 
@@ -28,6 +26,5 @@ public:
     void listarAgendamentos(std::string data);
     void listarAgendamentos(std::string data, std::string local);
     void listarAgendamentos(std::string data, std::string local, std::string cadastroNacional);
-
 };
-#endif 
+#endif

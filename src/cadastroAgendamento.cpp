@@ -1,7 +1,6 @@
 //Aluno: Lucas de Oliveira Mota
 //       Igor Cristian Acácio Josafá  
 
-#include <iostream> 
 #include <fstream>
 #include <string>
 #include <cstring>
@@ -9,18 +8,15 @@
 #include "cadastroUsuario.h"
 #include "cadastroAgendamento.h"
 
-
-
-void CadastroAgendamento::novoCadastroAgendamento(int opcao){
-   
-   //Dados usados no agendamento
+void CadastroAgendamento::novoCadastroAgendamento(int opcao)
+{
+    // Dados usados no agendamento
     std::string data, local;
     std::ofstream arquivoagendamento;
     std::vector<Agendamento> vecagendamentos;
     std::string cadastroNacional1;
     std::string cadastroNacional2;
     std::string nomeResiduo;
-
 
     std::cout << "Local: ";
     std::cin.ignore();
@@ -31,23 +27,21 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao){
 
     std::cout << "Cadastro de usuario Receptor: ";
     std::getline(std::cin, cadastroNacional1);
-    
+
     std::cout << "Cadastro de usuario Recolhedor: ";
     std::getline(std::cin, cadastroNacional2);
 
     std::cout << "Nome do Residuo: ";
     std::getline(std::cin, nomeResiduo);
 
-
-    
-     
-  Agendamento agendamento(data, local);
-        vecagendamentos.push_back(agendamento);
+    Agendamento agendamento(data, local);
+    vecagendamentos.push_back(agendamento);
 
     arquivoagendamento.open("agendamento.txt", std::ios::app);
-    for(int i = 0; i < vecagendamentos.size(); i++) {
-        arquivoagendamento << local             << "&";
-        arquivoagendamento << data              << "&";
+    for (int i = 0; i < vecagendamentos.size(); i++)
+    {
+        arquivoagendamento << local << "&";
+        arquivoagendamento << data << "&";
         arquivoagendamento << cadastroNacional1 << "&";
         arquivoagendamento << cadastroNacional2 << "&";
         arquivoagendamento << nomeResiduo       << "&";
@@ -112,14 +106,13 @@ void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string ca
     system("clear||cls");
 }
 
-
 void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string cadastroNacional1){
-    //Consultar cadastros de agendamento 
+    //Consultar cadastros de agendamento
     std::ifstream arquivoagendamento;
     std::string linha;
     std::string local, data, cadastroNacional2, nomeresiduo;
     std::vector<Agendamento> vecagendamentos;
-   
+
     arquivoagendamento.open("agendamento.txt");
 
     if(arquivoagendamento.is_open()){
@@ -145,8 +138,10 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
         std::cout << "Nome do Residuo: " << nomeresiduo << std::endl;
         std::cout << std::endl;
     }
+
     }
-    else {
+    else
+    {
         std::cout << "Cadastro não encontrado!" << std::endl;
     }
 
@@ -155,10 +150,8 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
     std::cin.ignore();
     std::cin.get();
     system("clear||cls");
-
-
-
 }
+
 void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cadastroNacional1){
     //Deletar um agendamento
     std::ifstream arquivoagendamento;
@@ -194,13 +187,16 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cad
     arquivoagendamento.open("agendamento.txt");
     arquivoagendamento2.open("agendamento2.txt");
 
-    if(arquivoagendamento.is_open()){
-        while(std::getline(arquivoagendamento, linha)){
+    if (arquivoagendamento.is_open())
+    {
+        while (std::getline(arquivoagendamento, linha))
+        {
             std::stringstream ss(linha);
             std::getline(ss, local, '&');
             std::getline(ss, data, '&');
             std::getline(ss, cadastroNacional1, '&');
             std::getline(ss, cadastroNacional2, '&');
+
             if(local != localDeletar || data != dataDeletar || cadastroNacional1 != cadastroNacional1Deletar || cadastroNacional2 != cadastroNacional2Deletar || nomeResiduoDeletar != nomeResiduoDeletar){
                 arquivoagendamento2 << local << "&";
                 arquivoagendamento2 << data << "&";
@@ -209,12 +205,14 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cad
                 arquivoagendamento2 << nomeResiduoDeletar << "&";
                 arquivoagendamento2 << std::endl;
             }
-            else {
+            else
+            {
                 achou = true;
             }
         }
     }
-    else {
+    else
+    {
         std::cout << "Cadastro não encontrado!" << std::endl;
     }
 
@@ -224,10 +222,12 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cad
     remove("agendamento.txt");
     rename("agendamento2.txt", "agendamento.txt");
 
-    if(achou){
+    if (achou)
+    {
         std::cout << "Cadastro deletado com sucesso!" << std::endl;
     }
-    else {
+    else
+    {
         std::cout << "Cadastro não encontrado!" << std::endl;
     }
 
@@ -235,9 +235,4 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cad
     std::cin.ignore();
     std::cin.get();
     system("clear||cls");
-
-
-
 }
-
-

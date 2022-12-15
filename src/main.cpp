@@ -1,5 +1,6 @@
 //Aluno: Lucas de Oliveira Mota
 //       Igor Cristian Acácio Josafá  
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -43,8 +44,6 @@
         - quantidade
         - observações
 */
-
-//Na função main, o usuário escolhe o tipo de cadastro que deseja fazer
 
 int main() {
     int opcao;
@@ -298,12 +297,11 @@ int main() {
 
             } else if (opcao == 2) {
                 //Excluir resíduos
+                system("clear||cls");
                 std::string nome;
-                std::cout << "Excluir resíduos" << std::endl;
-                std::cout << "Digite o nome do residuo para excluir: ";
+                std::cout << "Digite o nome do resíduo: ";
                 std::cin >> nome;
-                CadastroResiduo::deletarCadastroResiduo(opcao, nome);
-
+                CadastroResiduo::deletarCadastroResiduo(nome);
             } else if (opcao == 3) {
                 //Excluir pontos de coleta
                 std::string cadastrocoleta;
@@ -312,7 +310,6 @@ int main() {
                 std::cin.ignore();
                 std::getline(std::cin, cadastrocoleta);
                 CadastroColeta::deletarCadastroColeta(opcao, cadastrocoleta);
-
             } else if (opcao == 4) {
                 //Excluir agendamentos
                 std::string cadastroagendamento;

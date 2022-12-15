@@ -16,5 +16,3 @@ public:
     static void deletarCadastroAgendamento(int opcao1, std::string CadastroAgendamento);
     static void atualizarCadastroAgendamento(int opcao1, std::string CadastroAgendamento);
 };
-
-
