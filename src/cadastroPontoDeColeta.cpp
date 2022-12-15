@@ -1,91 +1,64 @@
-// Aluno: Lucas de Oliveira Mota
-//        Igor Cristian Acácio Josafá
+// Aluno: Lucas Mota, Igor Acácio
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstring>
-#include "pontoDeColeta.h"
 #include "cadastroPontoDeColeta.h"
 
-void CadastroColeta::novoCadastroColeta(int opcao)
+void CadastroPontoDeColeta::novoCadastroPontoDeColeta()
 {
-    std::string local;
-
-    std::cout << "Digite o local da coleta: ";
-    std::cin.ignore();
-    std::getline(std::cin, local);
-
+    std::string cep, nome, endereco, bairro, cidade, estado;
     std::ofstream arquivo;
-    arquivo.open("coleta.txt", std::ios::app);
-    arquivo << local << std::endl;
+    std::vector<PontoDeColeta> pontosDeColeta;
+
+    std::cout << "Digite o CEP do ponto de coleta: ";
+    std::cin.ignore();
+    std::getline(std::cin, cep);
+
+    std::cout << "Digite o nome do ponto de coleta: ";
+    std::getline(std::cin, nome);
+
+    std::cout << "Digite o endereço do ponto de coleta: ";
+    std::getline(std::cin, endereco);
+
+    std::cout << "Digite o bairro do ponto de coleta: ";
+    std::getline(std::cin, bairro);
+
+    std::cout << "Digite a cidade do ponto de coleta: ";
+    std::getline(std::cin, cidade);
+
+    std::cout << "Digite o estado do ponto de coleta: ";
+    std::getline(std::cin, estado);
+
+    PontoDeColeta pontoDeColeta(cep, nome, endereco, bairro, cidade, estado);
+    pontosDeColeta.push_back(pontoDeColeta);
+
+    arquivo.open("pontosDeColeta.txt", std::ios::app);
+    for (int i = 0; i < pontosDeColeta.size(); i++)
+    {
+        arquivo << pontosDeColeta[i].getCep() << "&";
+        arquivo << pontosDeColeta[i].getNome() << "&";
+        arquivo << pontosDeColeta[i].getEndereco() << "&";
+        arquivo << pontosDeColeta[i].getBairro() << "&";
+        arquivo << pontosDeColeta[i].getCidade() << "&";
+        arquivo << pontosDeColeta[i].getEstado() << "&\n";
+    }
+
     arquivo.close();
+
+    system("clear||cls");
+    std::cout << "Ponto de coleta cadastrado com sucesso!" << std::endl;
+    std::cout << "Pressione ENTER para continuar...";
+    std::cin.ignore();
+    std::cin.get();
+    system("clear||cls");
 }
 
-void CadastroColeta::consultarCadastroColeta(int opcao, std::string CadastroColeta)
+void CadastroPontoDeColeta::consultarCadastroPontoDeColeta(int opcao, std::string nome)
 {
-    std::string local;
-    std::ifstream arquivo;
-    arquivo.open("coleta.txt");
-    while (!arquivo.eof())
-    {
-        arquivo >> local;
-        if (local == CadastroColeta)
-        {
-            std::cout << "Local: " << local << std::endl;
-        }
-    }
-    arquivo.close();
 }
 
-// Função para atualizar algum CadastroColeta
-
-void CadastroColeta::atualizarCadastroColeta(int opcao, std::string CadastroColeta)
+void CadastroPontoDeColeta::atualizarCadastroPontoDeColeta(int opcao, std::string nome)
 {
-    std::string local;
-    std::string local1;
-    std::ifstream arquivo;
-    std::ofstream arquivo1;
-    arquivo.open("coleta.txt");
-    arquivo1.open("coleta1.txt");
-    while (!arquivo.eof())
-    {
-        arquivo >> local;
-        if (local == CadastroColeta)
-        {
-            std::cout << "Digite o novo local da coleta: ";
-            std::cin.ignore();
-            std::getline(std::cin, local);
-            arquivo1 << local1 << std::endl;
-        }
-        else
-        {
-            arquivo1 << local << std::endl;
-        }
-    }
-    arquivo.close();
-    arquivo1.close();
-    remove("coleta.txt");
-    rename("coleta1.txt", "coleta.txt");
 }
 
-void CadastroColeta::deletarCadastroColeta(int opcao1, std::string local)
+void CadastroPontoDeColeta::deletarCadastroPontoDeColeta(std::string nome)
 {
-    std::string local1;
-    std::ifstream arquivo;
-    std::ofstream arquivo1;
-    arquivo.open("coleta.txt");
-    arquivo1.open("coleta1.txt");
-    while (!arquivo.eof())
-    {
-        arquivo >> local;
-        if (local != local1)
-        {
-            arquivo1 << local << std::endl;
-        }
-    }
-    arquivo.close();
-    arquivo1.close();
-    remove("coleta.txt");
-    rename("coleta1.txt", "coleta.txt");
 }
