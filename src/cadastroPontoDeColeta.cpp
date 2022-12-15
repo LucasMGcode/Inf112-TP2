@@ -51,8 +51,66 @@ void CadastroPontoDeColeta::novoCadastroPontoDeColeta()
     system("clear||cls");
 }
 
-void CadastroPontoDeColeta::consultarCadastroPontoDeColeta(int opcao, std::string nome)
+//Consulta por CEP
+void CadastroPontoDeColeta::consultarCadastroPontoDeColeta(std::string cep)
 {
+    std::ifstream arquivo;
+    std::string linha, dado;
+    std::vector<std::string> dados;
+    
+    arquivo.open("pontosDeColeta.txt");
+    while (std::getline(arquivo, linha))
+    {
+        std::stringstream ss(linha);
+        while (std::getline(ss, dado, '&'))
+        {
+            dados.push_back(dado);
+        }
+    }
+
+    int cont = 0;
+    for (int i = 0; i < dados.size(); i++)
+    {
+        if (dados[i] == cep)
+        {
+            cont++;
+        }
+    }
+
+    if (cont >= 1)
+    {
+        int achou = 0;
+        for (int i = 0; i < dados.size(); i++)
+        {
+            if (dados[i] == cep)
+            {
+                achou++;
+                
+                if (achou > 1)
+                {
+                    std::cout << std::endl;
+                }
+                std::cout << achou << "º ponto de coleta encontrado:" << std::endl;
+                std::cout << "CEP: " << dados[i] << std::endl;
+                std::cout << "Nome: " << dados[i + 1] << std::endl;
+                std::cout << "Endereço: " << dados[i + 2] << std::endl;
+                std::cout << "Bairro: " << dados[i + 3] << std::endl;
+                std::cout << "Cidade: " << dados[i + 4] << std::endl;
+                std::cout << "Estado: " << dados[i + 5] << std::endl;
+            }
+        }
+    }
+    else
+    {
+        std::cout << "Nenhum ponto de coleta encontrado com o CEP informado!" << std::endl;
+    }
+
+    arquivo.close();
+
+    std::cout << "Pressione ENTER para continuar...";
+    std::cin.ignore();
+    std::cin.get();
+    system("clear||cls");
 }
 
 void CadastroPontoDeColeta::atualizarCadastroPontoDeColeta(int opcao, std::string nome)

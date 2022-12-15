@@ -12,7 +12,7 @@ class CadastroPontoDeColeta
 {
 public:
     static void novoCadastroPontoDeColeta();
-    static void consultarCadastroPontoDeColeta(int opcao, std::string nome); // Consulta por nome
+    static void consultarCadastroPontoDeColeta(std::string cep); // Consulta por cep
     static void atualizarCadastroPontoDeColeta(int opcao, std::string nome);
     static void deletarCadastroPontoDeColeta(std::string nome);
 };
