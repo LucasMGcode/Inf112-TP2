@@ -1,96 +1,27 @@
-// Aluno: Lucas Mota, Igor Acácio
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
 #include "pontoDeColeta.h"
 
-PontoDeColeta::PontoDeColeta()
+Coleta::Coleta(std::string local)
 {
-    this->cep = "";
-    this->nome = "";
-    this->endereco = "";
-    this->bairro = "";
-    this->cidade = "";
-    this->estado = "";
+    this->local = local;
 }
 
-PontoDeColeta::PontoDeColeta(std::string cep, std::string nome, std::string endereco, std::string bairro, std::string cidade, std::string estado)
-{
-    this->cep = cep;
-    this->nome = nome;
-    this->endereco = endereco;
-    this->bairro = bairro;
-    this->cidade = cidade;
-    this->estado = estado;
-}
-
-PontoDeColeta::~PontoDeColeta()
+Coleta::~Coleta()
 {
 }
 
-std::string PontoDeColeta::getCep()
+std::string Coleta::getLocal()
 {
-    return this->cep;
+    return local;
 }
 
-void PontoDeColeta::setCep(std::string cep)
+void Coleta::setLocal(std::string local)
 {
-    this->cep = cep;
-}
-
-std::string PontoDeColeta::getNome()
-{
-    return this->nome;
-}
-
-void PontoDeColeta::setNome(std::string nome)
-{
-    this->nome = nome;
-}
-
-std::string PontoDeColeta::getEndereco()
-{
-    return this->endereco;
-}
-
-void PontoDeColeta::setEndereco(std::string endereco)
-{
-    this->endereco = endereco;
-}
-
-std::string PontoDeColeta::getBairro()
-{
-    return this->bairro;
-}
-
-void PontoDeColeta::setBairro(std::string bairro)
-{
-    this->bairro = bairro;
-}
-
-std::string PontoDeColeta::getCidade()
-{
-    return this->cidade;
-}
-
-void PontoDeColeta::setCidade(std::string cidade)
-{
-    this->cidade = cidade;
-}
-
-std::string PontoDeColeta::getEstado()
-{
-    return this->estado;
-}
-
-void PontoDeColeta::setEstado(std::string estado)
-{
-    this->estado = estado;
-}
-
-void PontoDeColeta::imprimir()
-{
-    std::cout << "CEP: " << this->cep << std::endl;
-    std::cout << "Nome: " << this->nome << std::endl;
-    std::cout << "Endereco: " << this->endereco << std::endl;
-    std::cout << "Bairro: " << this->bairro << std::endl;
-    std::cout << "Cidade: " << this->cidade << std::endl;
-    std::cout << "Estado: " << this->estado << std::endl;
+    this->local = local;
 }

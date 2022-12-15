@@ -8,7 +8,7 @@
 #include "cadastroUsuario.h"
 #include "cadastroResiduo.h"
 #include "cadastroAgendamento.h"
-#include "cadastroColeta.h"
+#include "cadastroPontoDeColeta.h"
 
 /*
     Visão geral do programa: sistema de coleta seletiva

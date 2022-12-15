@@ -1,20 +1,17 @@
-// Aluno: Lucas Mota, Igor Acácio
-#ifndef CADASTROPONTODECOLETA_H
-#define CADASTROPONTODECOLETA_H
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
 
-#include <vector>
+#include <iostream>
 #include <fstream>
-#include <sstream>
-
+#include <string>
+#include <cstring>
 #include "pontoDeColeta.h"
 
-class CadastroPontoDeColeta
+class CadastroColeta : public Coleta
 {
 public:
-    static void novoCadastroPontoDeColeta(int opcao);
-    static void consultarCadastroPontoDeColeta(int opcao, std::string nome); // Consulta por nome
-    static void atualizarCadastroPontoDeColeta(int opcao, std::string nome);
-    static void deletarCadastroPontoDeColeta(std::string nome);
+    static void novoCadastroColeta(int opcao);
+    static void consultarCadastroColeta(int opcao, std::string CadastroColeta);
+    static void deletarCadastroColeta(int opcao1, std::string local);
+    static void atualizarCadastroColeta(int opcao1, std::string CadastroColeta);
 };
-
-#endif // CADASTROPONTODECOLETA_H
