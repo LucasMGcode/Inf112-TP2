@@ -13,8 +13,8 @@ class CadastroPontoDeColeta
 public:
     static void novoCadastroPontoDeColeta();
     static void consultarCadastroPontoDeColeta(std::string cep); // Consulta por cep
-    static void atualizarCadastroPontoDeColeta(int opcao, std::string nome);
-    static void deletarCadastroPontoDeColeta(std::string nome);
+    static void atualizarCadastroPontoDeColeta(std::string cep);
+    static void deletarCadastroPontoDeColeta(std::string cep);
 };
 
 #endif // CADASTROPONTODECOLETA_H

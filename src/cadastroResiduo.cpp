@@ -186,39 +186,30 @@ void CadastroResiduo::atualizarCadastroResiduo(int opcao, std::string nome)
         }
     }
 
-    if (!achou)
+    if (achou)
     {
+        arquivoNew.open("cadastroResiduo.txt");
+        for (int i = 0; i < dados.size(); i++)
+        {
+            if (i % itenPorLinha == 0 && i != 0)
+            {
+                arquivoNew << std::endl;
+            }
+            arquivoNew << dados[i] << "&";
+        }
         arquivoNew.close();
-        arquivoOld.close();
-        std::cout << "Cadastro não encontrado!" << std::endl;
+
         std::cout << std::endl;
+        std::cout << "Cadastro atualizado com sucesso!" << std::endl;
         std::cout << "Pressione ENTER para continuar..." << std::endl;
         std::cin.ignore();
         std::cin.get();
         system("clear||cls");
-        return;
     }
     else
     {
-        arquivoNew.open("temp.txt");
-        for (int i = 0; i < numeroLinhas; i++)
-        {
-            for (int j = 0; j < itenPorLinha; j++)
-            {
-                arquivoNew << dados[i * itenPorLinha + j] << "&";
-            }
-            arquivoNew << "\n";
-        }
-
-        arquivoNew.close();
-        arquivoOld.close();
-
-        remove("cadastroResiduo.txt");
-        rename("temp.txt", "cadastroResiduo.txt");
-
-        std::cout << "Cadastro atualizado com sucesso!" << std::endl;
-        std::cout << std::endl;
-        std::cout << "Pressione ENTER para continuar..." << std::endl;
+        std::cout << "Não foi encontrado nenhum cadastro com esse nome e tipo." << std::endl;
+        std::cout << "Pressione ENTER para continuar...";
         std::cin.ignore();
         std::cin.get();
         system("clear||cls");
@@ -241,7 +232,7 @@ void CadastroResiduo::deletarCadastroResiduo(std::string nome)
     std::fstream arquivoOld;
     std::ofstream arquivoNew;
     std::string linha, dado;
-    int itenPorLinha = 0, numeroLinhas = 0;
+    int itensPorLinha = 0, numeroLinhas = 0;
     std::vector<std::string> dados;
 
     arquivoOld.open("cadastroResiduo.txt");
@@ -253,7 +244,7 @@ void CadastroResiduo::deletarCadastroResiduo(std::string nome)
         {
             if (numeroLinhas == 1)
             {
-                itenPorLinha++;
+                itensPorLinha++;
             }
             dados.push_back(dado);
         }
@@ -264,7 +255,7 @@ void CadastroResiduo::deletarCadastroResiduo(std::string nome)
         if (dados[i] == nome)
         {
             dados.erase(dados.begin() + i - 1);
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < itensPorLinha; j++)
             {
                 dados.erase(dados.begin() + i);
             }
@@ -274,9 +265,9 @@ void CadastroResiduo::deletarCadastroResiduo(std::string nome)
     arquivoNew.open("temp.txt");
     for (int i = 0; i < numeroLinhas - 1; i++)
     {
-        for (int j = 0; j < itenPorLinha; j++)
+        for (int j = 0; j < itensPorLinha; j++)
         {
-            arquivoNew << dados[i * itenPorLinha + j] << "&";
+            arquivoNew << dados[i * itensPorLinha + j] << "&";
         }
         arquivoNew << "\n";
     }
@@ -289,8 +280,7 @@ void CadastroResiduo::deletarCadastroResiduo(std::string nome)
 
     system("clear||cls");
     std::cout << "Cadastro deletado com sucesso!" << std::endl;
-    std::cout << std::endl;
-    std::cout << "Pressione ENTER para continuar..." << std::endl;
+    std::cout << "Pressione ENTER para continuar...";
     std::cin.ignore();
     std::cin.get();
     system("clear||cls");

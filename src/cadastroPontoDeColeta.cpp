@@ -113,10 +113,161 @@ void CadastroPontoDeColeta::consultarCadastroPontoDeColeta(std::string cep)
     system("clear||cls");
 }
 
-void CadastroPontoDeColeta::atualizarCadastroPontoDeColeta(int opcao, std::string nome)
+void CadastroPontoDeColeta::atualizarCadastroPontoDeColeta(std::string cep)
 {
+    std::fstream arquivoOld;
+    std::ofstream arquivoNew;
+    std::string linha, dado;
+    std::vector<std::string> dados;
+    int itensPorLinha = 0, numeroLinhas = 0;
+    bool achou = false;
+
+    arquivoOld.open("pontosDeColeta.txt");
+    while (std::getline(arquivoOld, linha))
+    {
+        std::stringstream ss(linha);
+        numeroLinhas++;
+        while (std::getline(ss, dado, '&'))
+        {
+            if (numeroLinhas == 1)
+            {
+                itensPorLinha++;
+            }
+            dados.push_back(dado);
+        }
+    }
+
+    for (int i = 0; i < dados.size(); i++)
+    {
+        if (dados[i] == cep)
+        {
+            achou = true;
+            std::cout << "Digite o novo CEP do ponto de coleta: ";
+            std::cin.ignore();
+            std::getline(std::cin, dado);
+            dados[i] = dado;
+
+            std::cout << "Digite o novo nome do ponto de coleta: ";
+            std::getline(std::cin, dado);
+            dados[i + 1] = dado;
+
+            std::cout << "Digite o novo endereço do ponto de coleta: ";
+            std::getline(std::cin, dado);
+            dados[i + 2] = dado;
+
+            std::cout << "Digite o novo bairro do ponto de coleta: ";
+            std::getline(std::cin, dado);
+            dados[i + 3] = dado;
+
+            std::cout << "Digite a nova cidade do ponto de coleta: ";
+            std::getline(std::cin, dado);
+            dados[i + 4] = dado;
+
+            std::cout << "Digite o novo estado do ponto de coleta: ";
+            std::getline(std::cin, dado);
+            dados[i + 5] = dado;
+
+            achou = true;
+        }
+    }
+
+    if (achou)
+    {
+        arquivoOld.close();
+        arquivoNew.open("pontosDeColeta.txt");
+        for (int i = 0; i < dados.size(); i++)
+        {
+            if (i % itensPorLinha == 0 && i != 0)
+            {
+                arquivoNew << std::endl;
+            }
+            arquivoNew << dados[i] << "&";
+        }
+        arquivoNew.close();
+
+        system("clear||cls");
+        std::cout << "Ponto de coleta atualizado com sucesso!" << std::endl;
+        std::cout << "Pressione ENTER para continuar...";
+        std::cin.ignore();
+        std::cin.get();
+        system("clear||cls");
+    }
+    else
+    {
+        arquivoOld.close();
+        system("clear||cls");
+        std::cout << "Nenhum ponto de coleta encontrado com o CEP informado!" << std::endl;
+        std::cout << "Pressione ENTER para continuar...";
+        std::cin.ignore();
+        std::cin.get();
+        system("clear||cls");
+    }
 }
 
-void CadastroPontoDeColeta::deletarCadastroPontoDeColeta(std::string nome)
+void CadastroPontoDeColeta::deletarCadastroPontoDeColeta(std::string cep)
 {
+    if (cep == "")
+    {
+        std::cout << "Não é possível deletar um ponto de coleta sem informar o CEP!" << std::endl;
+        std::cout << "Pressione ENTER para continuar...";
+        std::cin.ignore();
+        std::cin.get();
+        system("clear||cls");
+        return;
+    }
+
+    std::fstream arquivoOld;
+    std::ofstream arquivoNew;
+    std::string linha, dado;
+    int itensPorLinha = 0, numeroLinhas = 0;
+    std::vector<std::string> dados;
+    
+    arquivoOld.open("pontosDeColeta.txt");
+    while (std::getline(arquivoOld, linha))
+    {
+        std::stringstream ss(linha);
+        numeroLinhas++;
+        while (std::getline(ss, dado, '&'))
+        {
+            if (numeroLinhas == 1)
+            {
+                itensPorLinha++;
+            }
+            dados.push_back(dado);
+        }
+    }
+
+    for (int i = 0; i < dados.size(); i++)
+    {
+        if (dados[i] == cep)
+        {
+            for (int j = 0; j < itensPorLinha; j++)
+            {
+                dados.erase(dados.begin() + i);
+            }
+        }
+    }
+
+    arquivoNew.open("pontosDeColeta.txt");
+    for (int i = 0; i < numeroLinhas - 1; i++)
+    {
+        for (int j = 0; j < itensPorLinha; j++)
+        {
+            arquivoNew << dados[i * itensPorLinha + j] << "&";
+        }
+        arquivoNew << "\n";
+    }
+
+    arquivoOld.close();
+    arquivoNew.close();
+
+    remove("pontosDeColeta.txt");
+    rename("pontosDeColeta.txt", "pontosDeColeta.txt");
+
+    system("clear||cls");
+    std::cout << "Ponto de coleta deletado com sucesso!" << std::endl;
+    std::cout << "Pressione ENTER para continuar...";
+    std::cin.ignore();
+    std::cin.get();
+    system("clear||cls");
 }
