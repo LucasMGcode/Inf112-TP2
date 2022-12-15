@@ -1,4 +1,6 @@
-//Aluno: Lucas Mota, Igor Acácio
+//Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
+
 //TO DO: tratamento de exceções
 //TO DO: revisar o código
 //TO DO: tornar classes usuários mais específicas

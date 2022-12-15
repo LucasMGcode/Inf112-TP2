@@ -1,4 +1,6 @@
-//Aluno: Lucas Mota, Igor Acácio
+//Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
+
 #ifndef CADASTROUSUARIO_H
 #define CADASTROUSUARIO_H
 

@@ -1,5 +1,5 @@
-// Aluno: Lucas Mota, Igor Acácio
-#include <iostream>
+//Aluno: Lucas de Oliveira Mota
+//       Igor Cristian Acácio Josafá  
 #include <fstream>
 #include <string>
 #include "cadastroResiduo.h"
