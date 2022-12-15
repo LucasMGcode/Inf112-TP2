@@ -1,5 +1,5 @@
-//Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
 
 #ifndef AGENDAMENTO_H
 #define AGENDAMENTO_H

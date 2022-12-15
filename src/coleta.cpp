@@ -1,27 +1,27 @@
-//Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá  
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
 
-#include <iostream> 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <cstring>
 #include "coleta.h"
 
-
-
-Coleta::Coleta(std::string local){
+Coleta::Coleta(std::string local)
+{
     this->local = local;
 }
 
-
-Coleta::~Coleta(){
+Coleta::~Coleta()
+{
 }
 
-std::string Coleta::getLocal(){
+std::string Coleta::getLocal()
+{
     return local;
 }
 
-void Coleta::setLocal(std::string local){
+void Coleta::setLocal(std::string local)
+{
     this->local = local;
 }
-

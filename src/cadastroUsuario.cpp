@@ -1,9 +1,9 @@
-//Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá  
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
 
-//TO DO: tratamento de exceções
-//TO DO: revisar o código
-//TO DO: tornar classes usuários mais específicas
+// TO DO: tratamento de exceções
+// TO DO: revisar o código
+// TO DO: tornar classes usuários mais específicas
 
 #include <iostream>
 #include <cstring>
@@ -11,8 +11,7 @@
 #include "cadastroUsuario.h"
 
 // Criar um novo cadastro
-void
-CadastroUsuario::novoCadastroUsuario(int opcao)
+void CadastroUsuario::novoCadastroUsuario(int opcao)
 {
     std::string cadastroNacional, nome, endereco, telefone, email;
     std::ofstream arquivo;
@@ -72,8 +71,7 @@ CadastroUsuario::novoCadastroUsuario(int opcao)
 }
 
 // Consulta o cadastro através do cadastro nacional(CPF/CNPJ).
-void
-CadastroUsuario::consultarCadastroUsuario(int opcao, std::string cadastroNacional)
+void CadastroUsuario::consultarCadastroUsuario(int opcao, std::string cadastroNacional)
 {
     std::ifstream arquivo;
     std::string linha, dado;
@@ -154,8 +152,7 @@ CadastroUsuario::consultarCadastroUsuario(int opcao, std::string cadastroNaciona
 }
 
 // Atualiza o cadastro através do cadastro nacional(CPF/CNPJ) e do tipo de cadastro de usuário (Doador, Receptor ou Recolhedor).
-void
-CadastroUsuario::atualizarCadastroUsuario(int opcao, std::string cadastroNacional)
+void CadastroUsuario::atualizarCadastroUsuario(int opcao, std::string cadastroNacional)
 {
     std::fstream arquivoOld;
     std::ofstream arquivoNew;
@@ -249,8 +246,7 @@ CadastroUsuario::atualizarCadastroUsuario(int opcao, std::string cadastroNaciona
 }
 
 // Deleta o cadastro através do cadastro nacional(CPF/CNPJ).
-void
-CadastroUsuario::deletarCadastroUsuario(std::string cadastroNacional)
+void CadastroUsuario::deletarCadastroUsuario(std::string cadastroNacional)
 {
     std::fstream arquivoOld;
     std::ofstream arquivoNew;

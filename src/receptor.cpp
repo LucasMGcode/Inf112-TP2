@@ -1,8 +1,9 @@
-//Aluno: Lucas Mota, Igor Acácio
+// Aluno: Lucas Mota, Igor Acácio
 #include "receptor.h"
 
-//Construtor
-Receptor::Receptor(std::string cadastroNacional, std::string nome, std::string endereco, std::string telefone, std::string email) {
+// Construtor
+Receptor::Receptor(std::string cadastroNacional, std::string nome, std::string endereco, std::string telefone, std::string email)
+{
     this->cadastroNacional = cadastroNacional;
     this->nome = nome;
     this->endereco = endereco;
@@ -10,5 +11,5 @@ Receptor::Receptor(std::string cadastroNacional, std::string nome, std::string e
     this->email = email;
 }
 
-//Destrutor
+// Destrutor
 Receptor::~Receptor() {}

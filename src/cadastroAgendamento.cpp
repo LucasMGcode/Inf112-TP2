@@ -1,5 +1,5 @@
-//Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá  
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
 
 #include <fstream>
 #include <string>
@@ -44,7 +44,7 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao)
         arquivoagendamento << data << "&";
         arquivoagendamento << cadastroNacional1 << "&";
         arquivoagendamento << cadastroNacional2 << "&";
-        arquivoagendamento << nomeResiduo       << "&";
+        arquivoagendamento << nomeResiduo << "&";
         arquivoagendamento << std::endl;
     }
 
@@ -57,10 +57,11 @@ void CadastroAgendamento::novoCadastroAgendamento(int opcao)
     std::cin.get();
     system("clear||cls");
 }
-//Função para atualizar algum CadastroAgendamento
+// Função para atualizar algum CadastroAgendamento
 
-void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string cadastroNacional1){
-    //Dados usados no agendamento
+void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string cadastroNacional1)
+{
+    // Dados usados no agendamento
     std::string data, local;
     std::ofstream arquivoagendamento;
     std::vector<Agendamento> vecagendamentos;
@@ -76,7 +77,7 @@ void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string ca
 
     std::cout << "Cadastro de usuario Receptor: ";
     std::getline(std::cin, cadastroNacional1);
-    
+
     std::cout << "Cadastro de usuario Recolhedor: ";
     std::getline(std::cin, cadastroNacional2);
 
@@ -84,15 +85,16 @@ void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string ca
     std::getline(std::cin, nomeResiduo);
 
     Agendamento agendamento(data, local);
-        vecagendamentos.push_back(agendamento);
+    vecagendamentos.push_back(agendamento);
 
     arquivoagendamento.open("agendamento.txt", std::ios::app);
-    for(int i = 0; i < vecagendamentos.size(); i++) {
-        arquivoagendamento << local             << "&";
-        arquivoagendamento << data              << "&";
+    for (int i = 0; i < vecagendamentos.size(); i++)
+    {
+        arquivoagendamento << local << "&";
+        arquivoagendamento << data << "&";
         arquivoagendamento << cadastroNacional1 << "&";
         arquivoagendamento << cadastroNacional2 << "&";
-        arquivoagendamento << nomeResiduo       << "&";
+        arquivoagendamento << nomeResiduo << "&";
         arquivoagendamento << std::endl;
     }
 
@@ -106,8 +108,9 @@ void CadastroAgendamento::atualizarCadastroAgendamento(int opcao, std::string ca
     system("clear||cls");
 }
 
-void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string cadastroNacional1){
-    //Consultar cadastros de agendamento
+void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string cadastroNacional1)
+{
+    // Consultar cadastros de agendamento
     std::ifstream arquivoagendamento;
     std::string linha;
     std::string local, data, cadastroNacional2, nomeresiduo;
@@ -115,30 +118,32 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
 
     arquivoagendamento.open("agendamento.txt");
 
-    if(arquivoagendamento.is_open()){
-        if(cadastroNacional1 == cadastroNacional1 || cadastroNacional1 == cadastroNacional2){
-        while(std::getline(arquivoagendamento, linha)){
-            std::stringstream ss(linha);
-            std::getline(ss, local, '&');
-            std::getline(ss, data, '&');
-            std::getline(ss, cadastroNacional1, '&');
-            std::getline(ss, cadastroNacional2, '&');
-            std::getline(ss, nomeresiduo, '&');
-            Agendamento agendamento(data, local);
-            vecagendamentos.push_back(agendamento);
+    if (arquivoagendamento.is_open())
+    {
+        if (cadastroNacional1 == cadastroNacional1 || cadastroNacional1 == cadastroNacional2)
+        {
+            while (std::getline(arquivoagendamento, linha))
+            {
+                std::stringstream ss(linha);
+                std::getline(ss, local, '&');
+                std::getline(ss, data, '&');
+                std::getline(ss, cadastroNacional1, '&');
+                std::getline(ss, cadastroNacional2, '&');
+                std::getline(ss, nomeresiduo, '&');
+                Agendamento agendamento(data, local);
+                vecagendamentos.push_back(agendamento);
+            }
         }
-    
-    }
-    //Imprime os agendamentos
-    for(int i = 0; i < vecagendamentos.size(); i++){
-        std::cout << "Local: " << vecagendamentos[i].getLocal() << std::endl;
-        std::cout << "Data: " << vecagendamentos[i].getData() << std::endl;
-        std::cout << "Cadastro de usuario Receptor: " << cadastroNacional1 << std::endl;
-        std::cout << "Cadastro de usuario Recolhedor: " << cadastroNacional2 << std::endl;
-        std::cout << "Nome do Residuo: " << nomeresiduo << std::endl;
-        std::cout << std::endl;
-    }
-
+        // Imprime os agendamentos
+        for (int i = 0; i < vecagendamentos.size(); i++)
+        {
+            std::cout << "Local: " << vecagendamentos[i].getLocal() << std::endl;
+            std::cout << "Data: " << vecagendamentos[i].getData() << std::endl;
+            std::cout << "Cadastro de usuario Receptor: " << cadastroNacional1 << std::endl;
+            std::cout << "Cadastro de usuario Recolhedor: " << cadastroNacional2 << std::endl;
+            std::cout << "Nome do Residuo: " << nomeresiduo << std::endl;
+            std::cout << std::endl;
+        }
     }
     else
     {
@@ -152,8 +157,9 @@ void CadastroAgendamento::consultarCadastroAgendamento(int opcao, std::string ca
     system("clear||cls");
 }
 
-void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cadastroNacional1){
-    //Deletar um agendamento
+void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cadastroNacional1)
+{
+    // Deletar um agendamento
     std::ifstream arquivoagendamento;
     std::ofstream arquivoagendamento2;
     std::string linha;
@@ -183,7 +189,6 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cad
     std::cout << "Digite o nome do Residuo a ser deletado: ";
     std::getline(std::cin, nomeResiduoDeletar);
 
-
     arquivoagendamento.open("agendamento.txt");
     arquivoagendamento2.open("agendamento2.txt");
 
@@ -197,7 +202,8 @@ void CadastroAgendamento::deletarCadastroAgendamento(int opcao1, std::string cad
             std::getline(ss, cadastroNacional1, '&');
             std::getline(ss, cadastroNacional2, '&');
 
-            if(local != localDeletar || data != dataDeletar || cadastroNacional1 != cadastroNacional1Deletar || cadastroNacional2 != cadastroNacional2Deletar || nomeResiduoDeletar != nomeResiduoDeletar){
+            if (local != localDeletar || data != dataDeletar || cadastroNacional1 != cadastroNacional1Deletar || cadastroNacional2 != cadastroNacional2Deletar || nomeResiduoDeletar != nomeResiduoDeletar)
+            {
                 arquivoagendamento2 << local << "&";
                 arquivoagendamento2 << data << "&";
                 arquivoagendamento2 << cadastroNacional1 << "&";

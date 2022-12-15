@@ -1,6 +1,6 @@
-//Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá
-//TO DO: tratamento de exceções
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
+// TO DO: tratamento de exceções
 
 #include <iostream>
 #include <cstring>
@@ -8,8 +8,7 @@
 #include "cadastroResiduo.h"
 
 // Criar um novo cadastro para residuo
-void
-CadastroResiduo::novoCadastroResiduo(int opcao)
+void CadastroResiduo::novoCadastroResiduo(int opcao)
 {
     // Variáveis
     int tipo;
@@ -74,8 +73,7 @@ CadastroResiduo::novoCadastroResiduo(int opcao)
 }
 
 // Consulta por nome
-void
-CadastroResiduo::consultarCadastroResiduo(int opcao, std::string nome)
+void CadastroResiduo::consultarCadastroResiduo(int opcao, std::string nome)
 {
     std::ifstream arquivo;
     std::string linha, dado;
@@ -146,8 +144,7 @@ CadastroResiduo::consultarCadastroResiduo(int opcao, std::string nome)
     system("clear||cls");
 }
 
-void
-CadastroResiduo::atualizarCadastroResiduo(int opcao, std::string nome)
+void CadastroResiduo::atualizarCadastroResiduo(int opcao, std::string nome)
 {
     std::fstream arquivoOld;
     std::ofstream arquivoNew;
@@ -228,8 +225,7 @@ CadastroResiduo::atualizarCadastroResiduo(int opcao, std::string nome)
     }
 }
 
-void
-CadastroResiduo::deletarCadastroResiduo(std::string nome)
+void CadastroResiduo::deletarCadastroResiduo(std::string nome)
 {
     if (nome == "")
     {
@@ -241,7 +237,7 @@ CadastroResiduo::deletarCadastroResiduo(std::string nome)
         system("clear||cls");
         return;
     }
-    
+
     std::fstream arquivoOld;
     std::ofstream arquivoNew;
     std::string linha, dado;

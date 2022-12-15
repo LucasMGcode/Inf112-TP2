@@ -1,8 +1,9 @@
-//Aluno: Lucas Mota, Igor Acácio
+// Aluno: Lucas Mota, Igor Acácio
 #include "recolhedor.h"
 
-//Construtor
-Recolhedor::Recolhedor(std::string cadastroNacional, std::string nome, std::string endereco, std::string telefone, std::string email) {
+// Construtor
+Recolhedor::Recolhedor(std::string cadastroNacional, std::string nome, std::string endereco, std::string telefone, std::string email)
+{
     this->cadastroNacional = cadastroNacional;
     this->nome = nome;
     this->endereco = endereco;
@@ -10,5 +11,5 @@ Recolhedor::Recolhedor(std::string cadastroNacional, std::string nome, std::stri
     this->email = email;
 }
 
-//Destrutor
+// Destrutor
 Recolhedor::~Recolhedor() {}

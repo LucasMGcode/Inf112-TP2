@@ -1,5 +1,5 @@
-//Aluno: Lucas de Oliveira Mota
-//       Igor Cristian Acácio Josafá  
+// Aluno: Lucas de Oliveira Mota
+//        Igor Cristian Acácio Josafá
 
 #ifndef CADASTROUSUARIO_H
 #define CADASTROUSUARIO_H
@@ -13,12 +13,13 @@
 #include "receptor.h"
 #include "recolhedor.h"
 
-class CadastroUsuario {
-    public:
-        static void novoCadastroUsuario(int opcao);
-        static void consultarCadastroUsuario(int opcao, std::string cadastroNacional);
-        static void atualizarCadastroUsuario(int opcao, std::string cadastroNacional);
-        static void deletarCadastroUsuario(std::string cadastroNacional);
+class CadastroUsuario
+{
+public:
+    static void novoCadastroUsuario(int opcao);
+    static void consultarCadastroUsuario(int opcao, std::string cadastroNacional);
+    static void atualizarCadastroUsuario(int opcao, std::string cadastroNacional);
+    static void deletarCadastroUsuario(std::string cadastroNacional);
 };
 
-#endif //CADASTROUSUARIO_H
+#endif // CADASTROUSUARIO_H
