@@ -125,8 +125,7 @@ int main()
             else if (opcao == 3)
             {
                 // Cadastro de pontos de coleta
-                std::cout << "Cadastro de pontos de coleta" << std::endl;
-                CadastroColeta::novoCadastroColeta(opcao);
+                CadastroPontoDeColeta::novoCadastroPontoDeColeta();
             }
             else if (opcao == 4)
             {
@@ -212,13 +211,12 @@ int main()
             }
             else if (opcao == 3)
             {
-                std::string cadastrocoleta;
+                std::string cep;
                 // Consultar pontos de coleta
-                std::cout << "Consultar pontos de coleta" << std::endl;
-                std::cout << "Digite o nome do local para consulta:" << std::endl;
+                std::cout << "Digite o CEP para consulta: ";
                 std::cin.ignore();
-                std::getline(std::cin, cadastrocoleta);
-                CadastroColeta::consultarCadastroColeta(opcao, cadastrocoleta);
+                std::getline(std::cin, cep);
+                CadastroPontoDeColeta::consultarCadastroPontoDeColeta(cep);
             }
             else if (opcao == 4)
             {
@@ -307,13 +305,12 @@ int main()
             }
             else if (opcao == 3)
             {
-                std::string cadastrocoleta;
+                std::string cep;
                 // Atualizar pontos de coleta
-                std::cout << "Atualizar pontos de coleta" << std::endl;
-                std::cout << "Digite o nome do local para atualizar: ";
+                std::cout << "Digite o CEP para atualizar: ";
                 std::cin.ignore();
-                std::getline(std::cin, cadastrocoleta);
-                CadastroColeta::atualizarCadastroColeta(opcao, cadastrocoleta);
+                std::getline(std::cin, cep);
+                CadastroPontoDeColeta::atualizarCadastroPontoDeColeta(cep);
             }
             else if (opcao == 4)
             {
@@ -367,12 +364,11 @@ int main()
             else if (opcao == 3)
             {
                 // Excluir pontos de coleta
-                std::string cadastrocoleta;
-                std::cout << "Excluir pontos de coleta" << std::endl;
-                std::cout << "Digite o nome do local para excluir: ";
+                std::string cep;
+                std::cout << "Digite o CEP para excluir: ";
                 std::cin.ignore();
-                std::getline(std::cin, cadastrocoleta);
-                CadastroColeta::deletarCadastroColeta(opcao, cadastrocoleta);
+                std::getline(std::cin, cep);
+                CadastroPontoDeColeta::deletarCadastroPontoDeColeta(cep);
             }
             else if (opcao == 4)
             {
