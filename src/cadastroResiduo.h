@@ -1,4 +1,4 @@
-//Aluno: Lucas Mota, Igor Acácio
+// Aluno: Lucas Mota, Igor Acácio
 #ifndef CADASTRORESIDUO_H
 #define CADASTRORESIDUO_H
 
@@ -10,12 +10,13 @@
 #include "solido.h"
 #include "liquido.h"
 
-class CadastroResiduo {
-    public:
-        static void novoCadastroResiduo(int opcao);
-        static void consultarCadastroResiduo(int opcao, std::string nome); //Consulta por nome
-        static void atualizarCadastroResiduo(int opcao, std::string nome);
-        static void deletarCadastroResiduo(std::string nome);
+class CadastroResiduo
+{
+public:
+    static void novoCadastroResiduo(int opcao);
+    static void consultarCadastroResiduo(int opcao, std::string nome); // Consulta por nome
+    static void atualizarCadastroResiduo(int opcao, std::string nome);
+    static void deletarCadastroResiduo(std::string nome);
 };
 
-#endif //CADASTRORESIDUO_H
+#endif // CADASTRORESIDUO_H
